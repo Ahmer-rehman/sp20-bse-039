@@ -1,95 +1,98 @@
-import React from "react";
-import {StyleSheet ,   View ,  Text } from "react-native";
-export default function App(){
-  return(
-
-    <View style = {styles.container} >
-
-    <View style={styles.box1}>
-   <View >
-    <Text style = {{fontSize:25  , color:"black" , fontweight : "bold"}}>login</Text>
-   </View>
-    <View style={styles.inputstyle}>
-      <Text style = {styles.label}> User name</Text>
-    </View>
-    <View style={styles.inputstyle2}>
-      <Text style = {styles.label }> Password</Text>
-    </View>
-    <View style={styles.inputstyle3}>
-      <Text style = {styles.label} > Sign in</Text>
-    </View>
-    
-   <View style = {styles.style1}>
-    <Text style = {{ fontSize:15  , color:"blue" , fontweight : "bold"}}>
-      Don't have an account? Register
-    </Text>
-   </View>
-   </View>
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  Button,
+  TouchableOpacity,
+} from "react-native";
+ 
+export default function App() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+ 
+  return (
+    <View style={styles.container}>
+      <Image style={styles.image} source={require("./assets/log2.jpg")} />
+ 
+      <StatusBar style="auto" />
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Email."
+          placeholderTextColor="#003f5c"
+          onChangeText={(email) => setEmail(email)}
+        />
+      </View>
+ 
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Password."
+          placeholderTextColor="#003f5c"
+          secureTextEntry={true}
+          onChangeText={(password) => setPassword(password)}
+        />
+      </View>
+ 
+      <TouchableOpacity>
+        <Text style={styles.forgot_button}>Forgot Password?</Text>
+      </TouchableOpacity>
+ 
+      <TouchableOpacity style={styles.loginBtn}>
+        <Text style={styles.loginText}>LOGIN</Text>
+      </TouchableOpacity>
     </View>
   );
 }
+ 
 const styles = StyleSheet.create({
-  container:{
-    backgroundColor : "off white",
-    flex : 1,
-    flexDirection:"column",
-    justifyContent :"center",
-    alignItems : "center",
-    textAlign:"Center",
-    textDecorationColor:"blue",
-    
-  },
-  box1 : {
-    backgroundColor:"#F9F6EE",
-    width : 450,
-    height : 350,
-
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
  
-  
-  label:{
-    fontSize:18,
-    color:"#7d7d7d",
-    marginTop:10,
-    marginBottom:5,
-    lineHeight:25,
-    
+  image: {
+    marginBottom: 5,
+    height:150,
+    width:150,
+    borderColor:'red'
   },
-  inputstyle:{
-    backgroundColor:"white",
-    marginTop:30,
-    borderWidth:1,
-    borderColor : "black",
-    paddingHorizontal: 30,
-    paddingVertical:1,
-    borderRadius:2,
-   
-
+ 
+  inputView: {
+    backgroundColor: "#FFC0CB",
+    borderRadius: 30,
+    width: "70%",
+    height: 45,
+    marginBottom: 20,
+ 
+    alignItems: "center",
   },
-  inputstyle2:{
-    backgroundColor:"white",
-    marginTop:20,
-    borderWidth:1,
-    borderColor : "black",
-    paddingHorizontal:30,
-    paddingVertical:1,
-    borderRadius:1,
-    
+ 
+  TextInput: {
+    height: 50,
+    flex: 1,
+    padding: 10,
+    marginLeft: 20,
   },
-  inputstyle3:{
-    backgroundColor:"#E3242B",
-    marginTop:30,
-    borderWidth:1,
-    borderColor : "black",
-    paddingHorizontal:100,
-    paddingVertical:1,
-    borderRadius:1,
-    
+ 
+  forgot_button: {
+    height: 30,
+    marginBottom: 30,
   },
-  style1:{
-textDecorationLine : "underline",
-textDecorationColor:"blue",
-marginTop:50
-
-  }
-})
+ 
+  loginBtn: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#FF1493",
+  },
+});
